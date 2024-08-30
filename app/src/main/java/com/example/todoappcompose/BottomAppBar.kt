@@ -10,15 +10,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -37,7 +34,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.todoappcompose.view.AddTaskView
-import com.example.todoappcompose.view.HomePage
+import com.example.todoappcompose.view.HomePage.HomePage
+import com.example.todoappcompose.view.MenuPage
+import com.example.todoappcompose.view.ProfilePage
+import com.example.todoappcompose.view.QuickPage
 
 val Pink=Color(249,96,96)
 val DarkBlue=Color(41,46,78)
@@ -53,8 +53,9 @@ fun BottomAppBarWithNavigation(navController: NavHostController) {
         Column {
             NavHost(navController, startDestination = Screen.Home.route,Modifier.padding(it)/*.verticalScroll(rememberScrollState()).padding(16.dp)*/) {
                     composable(Screen.Home.route) { HomePage() }
-                    composable(Screen.Search.route) { HomePage() }
-                    composable(Screen.Profile.route) { MyTaskView() }
+                    composable(Screen.Menu.route) { MenuPage() }
+                    composable(Screen.Quick.route){ QuickPage() }
+                    composable(Screen.Profile.route) { ProfilePage() }
                     composable(Screen.AddTask.route){AddTaskView()}
 
       
@@ -75,11 +76,12 @@ fun CustomBottomAppBar(navController: NavHostController){
 
         ) {
 
+
             NavigationItem(navController, Screen.Home, Icons.Default.CheckCircle, "Home")
-            NavigationItem(navController, Screen.Search, Icons.Default.Home, "Search")
+            NavigationItem(navController, Screen.Menu, Icons.Default.Menu, "Menu")
             addButton(navController, Screen.AddTask, Icons.Default.Add, "addTask")
-            NavigationItem(navController, Screen.Home, Icons.Default.Favorite, "Home")
-            NavigationItem(navController, Screen.Home, Icons.Default.Person, "Home")
+            NavigationItem(navController, Screen.Quick, Icons.Default.Done, "Quick")
+            NavigationItem(navController, Screen.Profile, Icons.Default.Person, "Profile")
         }
 
 

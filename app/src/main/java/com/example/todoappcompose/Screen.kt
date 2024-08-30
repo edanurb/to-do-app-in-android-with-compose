@@ -4,9 +4,11 @@ import androidx.compose.runtime.Composable
 
 sealed class Screen(val route: String) {
     object Home : Screen("home")
-    object Search : Screen("search")
+    object Menu : Screen("search")
     object Profile : Screen("profile")
+    object Quick : Screen("quick")
     object AddTask: Screen("addTask")
-    // Add more screens as needed
+    object DailyTasks:Screen("dailyTasks")
+    object MonthlyTasks: Screen("monthlyTasks")
 }
 
