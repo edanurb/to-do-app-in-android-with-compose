@@ -53,8 +53,9 @@ fun BottomAppBarWithNavigation(navController: NavHostController) {
         Column {
             NavHost(navController, startDestination = Screen.Home.route,Modifier.padding(it)/*.verticalScroll(rememberScrollState()).padding(16.dp)*/) {
                     composable(Screen.Home.route) { HomePage() }
-                    composable(Screen.Search.route) { AddTaskView() }
+                    composable(Screen.Search.route) { HomePage() }
                     composable(Screen.Profile.route) { MyTaskView() }
+                    composable(Screen.AddTask.route){AddTaskView()}
 
       
             }
@@ -76,7 +77,7 @@ fun CustomBottomAppBar(navController: NavHostController){
 
             NavigationItem(navController, Screen.Home, Icons.Default.CheckCircle, "Home")
             NavigationItem(navController, Screen.Search, Icons.Default.Home, "Search")
-            addButton(navController, Screen.Home, Icons.Default.Add, "Home")
+            addButton(navController, Screen.AddTask, Icons.Default.Add, "addTask")
             NavigationItem(navController, Screen.Home, Icons.Default.Favorite, "Home")
             NavigationItem(navController, Screen.Home, Icons.Default.Person, "Home")
         }

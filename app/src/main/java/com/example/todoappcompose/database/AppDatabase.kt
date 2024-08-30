@@ -9,9 +9,9 @@ import com.example.todoappcompose.entity.TaskEntity
 @Database(
     entities = [TaskEntity::class],
     version = 2,
-    /*autoMigrations = [
+    autoMigrations = [
         AutoMigration (from = 1, to = 2)
-    ],*/
+    ],
     exportSchema = true
 )
 abstract class AppDatabase :RoomDatabase(){

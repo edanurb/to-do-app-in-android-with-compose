@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "b9e03fab2ae9c0c27dc552a7bb8461bf",
+    "identityHash": "645bc10509fe9dc30954896cb59ff860",
     "entities": [
       {
         "tableName": "taskEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `dueDate` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL, `status` INTEGER NOT NULL DEFAULT 0, `dueDate` INTEGER NOT NULL DEFAULT 0, `projectId` INTEGER NOT NULL DEFAULT 0, FOREIGN KEY(`projectId`) REFERENCES `taskEntity`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -27,10 +27,25 @@
             "notNull": true
           },
           {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
             "fieldPath": "dueDate",
             "columnName": "dueDate",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "projectId",
+            "columnName": "projectId",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
           }
         ],
         "primaryKey": {
@@ -40,13 +55,25 @@
           ]
         },
         "indices": [],
-        "foreignKeys": []
+        "foreignKeys": [
+          {
+            "table": "taskEntity",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "projectId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b9e03fab2ae9c0c27dc552a7bb8461bf')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '645bc10509fe9dc30954896cb59ff860')"
     ]
   }
 }
