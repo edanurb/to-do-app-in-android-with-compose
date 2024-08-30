@@ -153,10 +153,10 @@ fun AddTaskView() {
             descriptionTextField(descriptionTextField)
             addButton {
 
-                viewModel.insertTask(TaskEntity(
+                /*viewModel.insertTask(TaskEntity(
                     title=titleTextField.value,
                     description = descriptionTextField.value
-                ))
+                ))*/
             }
 
         }
