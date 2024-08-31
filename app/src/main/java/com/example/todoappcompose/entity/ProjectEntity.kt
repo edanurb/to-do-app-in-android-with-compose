@@ -5,9 +5,10 @@ import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+
 @Serializable
 @Entity(
-    tableName = tableName
+    tableName = projectTableName
 )
 data class ProjectEntity(
     @PrimaryKey(autoGenerate = true)
@@ -21,4 +22,5 @@ data class ProjectEntity(
     val description:String="",
 
     )
-const val tableNane="projectEntity"
+const val projectTableName="projectEntity"
+

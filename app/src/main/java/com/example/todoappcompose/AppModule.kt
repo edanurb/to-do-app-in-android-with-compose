@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.todoappcompose.database.AppDatabase
+import com.example.todoappcompose.repository.ProjectRepository
+import com.example.todoappcompose.repository.ProjectRepositoryImpl
 import com.example.todoappcompose.repository.TaskRepository
 import com.example.todoappcompose.repository.TaskRepositoryImpl
 import dagger.Module
@@ -29,5 +31,11 @@ object AppModule {
     @Singleton
     fun provideTaskRepository(database: AppDatabase):TaskRepository{
         return TaskRepositoryImpl(database.taskDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideProjectRepository(database: AppDatabase): ProjectRepository {
+        return ProjectRepositoryImpl(database.projectDao)
     }
 }

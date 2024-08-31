@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 2,
-    "identityHash": "662d5c1595a773ea80e3cc356f5d7c93",
+    "version": 3,
+    "identityHash": "5fb5e0c0d76bf19550609caf42ea0dfb",
     "entities": [
       {
         "tableName": "taskEntity",
@@ -68,12 +68,44 @@
             ]
           }
         ]
+      },
+      {
+        "tableName": "projectEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `description` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '662d5c1595a773ea80e3cc356f5d7c93')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5fb5e0c0d76bf19550609caf42ea0dfb')"
     ]
   }
 }
