@@ -166,51 +166,7 @@ fun projectColorIcon(){
 
 }
 
-@ReadOnlyComposable
-@Composable
-fun getDialogWindow(): Window? = (LocalView.current.parent as? DialogWindowProvider)?.window
 
-@Composable
-fun MinimalDialog(isAddProjectDialogOpened: MutableState<Boolean>) {
-
-
-Popup(
-properties = PopupProperties(focusable = true)
-) {
-    Dialog(onDismissRequest = {
-        isAddProjectDialogOpened.value = false },
-
-    ){
-
-
-
-        Box(
-            modifier = Modifier.fillMaxWidth().fillMaxHeight().background(Color.Cyan).clickable (
-                interactionSource = MutableInteractionSource(),
-                indication = null){
-                isAddProjectDialogOpened.value = false
-            }
-        )
-
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp)
-                .padding(16.dp)
-                .shadow(8.dp, shape = RoundedCornerShape(16.dp)),
-            shape = RoundedCornerShape(16.dp),
-        ) {
-            Text(
-                text = "This is a minimal dialog",
-                modifier = Modifier
-                    .fillMaxSize()
-                    .wrapContentSize(Alignment.Center),
-                textAlign = TextAlign.Center,
-            )
-        }
-    }
-}
-}
 @Composable
 fun addProjectDialog(isAddProjectDialogOpened: MutableState<Boolean>){
     Dialog(
