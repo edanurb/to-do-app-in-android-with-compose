@@ -55,10 +55,7 @@ import com.example.todoappcompose.viewModel.TaskViewModel
 @Preview(showBackground = true)
 @Composable
 fun HomePage(){
-    val viewModel = hiltViewModel<TaskViewModel>()
-    viewModel.getAllTasks()
 
-    val taskList=viewModel.taskList.collectAsState(initial = listOf())
     var selectedTab= remember { mutableStateOf<Screen>(Screen.DailyTasks) }
     var selectedFilter= remember { mutableStateOf(TaskFilter.ALL) }
 

@@ -309,8 +309,9 @@ fun DatePickerPopUp(dueDate: MutableState<Long>){
                     state =datePickerState,
                     showModeToggle = false,
                     dateValidator = {
-                        val currentTime=Date(it)
-                        currentTime.after(Date(System.currentTimeMillis()))
+                        val currentTime=Date(System.currentTimeMillis())
+                       true
+
 
                     }
                 )

@@ -7,6 +7,8 @@ import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.todoappcompose.entity.TaskEntity
+import com.example.todoappcompose.enums.TaskFilter
+import com.example.todoappcompose.enums.TaskStatus
 import com.example.todoappcompose.repository.TaskRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,6 +26,25 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
         viewModelScope.launch {
 
             taskRepository.getAllTask().collectLatest {
+                _taskList.tryEmit(it)
+            }
+            Log.d("tasklist","${taskList}")
+        }
+    }
+    fun getDailyTasks(statusFilter: TaskFilter){
+        Log.d("getDailyTask","getting daily Task")
+        viewModelScope.launch {
+
+            taskRepository.getDailyTasks(statusFilter).collectLatest {
+                _taskList.tryEmit(it)
+            }
+            Log.d("tasklist","${taskList}")
+        }
+    }
+    fun getMonthlyTasks(statusFilter: TaskFilter){
+        viewModelScope.launch {
+
+            taskRepository.getMonthlyTask(statusFilter).collectLatest {
                 _taskList.tryEmit(it)
             }
             Log.d("tasklist","${taskList}")

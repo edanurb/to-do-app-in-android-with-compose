@@ -10,5 +10,7 @@ sealed class Screen(val route: String) {
     object AddTask: Screen("addTask")
     object DailyTasks:Screen("dailyTasks")
     object MonthlyTasks: Screen("monthlyTasks")
+
+    object EditTask: Screen("editTask")
 }
 
